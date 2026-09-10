@@ -1,0 +1,13 @@
+# 保留用户身份以便审计，归档组不继承业务权限。
+# 如原先启用了 login/access_key，保持其开关为 true，归档会禁用登录及密钥。
+iam_users = [
+  {
+    user_name         = "employee01"
+    display_name      = "示例员工"
+    groups            = []
+    projects          = []
+    enable_login      = false
+    enable_access_key = false
+    is_offboarding    = true
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "failure": "Cloud Control created the user, then login profile creation failed with InvalidPassword",
+  "recovery": [
+    "confirmed user absent before original attempt",
+    "read back the uniquely prefixed partial user",
+    "imported only that user into the same Terraform state",
+    "generated a shorter strong random test password in memory",
+    "normalized global policy scope to the observed project_name empty-string representation",
+    "reran init/fmt/validate/plan"
+  ],
+  "recovery_plan": {
+    "create": 3,
+    "update": 1,
+    "delete": 0,
+    "replace": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "phase": "offboard",
+  "status": "passed",
+  "probes": [
+    {
+      "probe": "group-inherited-discovery",
+      "code": "InvalidAccessKey"
+    },
+    {
+      "probe": "alpha",
+      "code": "InvalidAccessKey"
+    },
+    {
+      "probe": "beta",
+      "code": "InvalidAccessKey"
+    }
+  ],
+  "cloud_vpc_created": false
+}

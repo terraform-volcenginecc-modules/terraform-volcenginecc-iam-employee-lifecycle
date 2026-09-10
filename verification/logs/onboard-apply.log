@@ -1,0 +1,34 @@
+module.identities.volcenginecc_iam_user.this["employee01"]: Modifying... [id=aiac-iam-0909-c7d4-employee01]
+module.identities.volcenginecc_iam_user.this["employee01"]: Modifications complete after 5s [id=aiac-iam-0909-c7d4-employee01]
+module.identities.volcenginecc_iam_accesskey.this["employee01"]: Creating...
+module.identities.volcenginecc_iam_accesskey.this["employee01"]: Creation complete after 4s [id=[REDACTED ACCESS KEY]]
+module.authorization.volcenginecc_iam_policy.project["alpha"]: Creating...
+module.authorization.volcenginecc_iam_policy.project["alpha"]: Creation complete after 6s [id=aiac-iam-0909-c7d4-alpha-access|Custom]
+module.authorization.volcenginecc_iam_policy.project["beta"]: Creating...
+module.authorization.volcenginecc_iam_policy.project["beta"]: Creation complete after 7s [id=aiac-iam-0909-c7d4-beta-access|Custom]
+
+Apply complete! Resources: 3 added, 1 changed, 0 destroyed.
+
+Outputs:
+
+access_credentials = <sensitive>
+group_names = {
+  "developers" = "aiac-iam-0909-c7d4-developers"
+  "offboarded" = "aiac-iam-0909-c7d4-offboarded"
+  "operations" = "aiac-iam-0909-c7d4-operations"
+}
+policy_names = {
+  "common" = "aiac-iam-0909-c7d4-common-read"
+  "projects" = {
+    "alpha" = "aiac-iam-0909-c7d4-alpha-access"
+    "beta" = "aiac-iam-0909-c7d4-beta-access"
+  }
+}
+project_names = {
+  "alpha" = "aiac-iam-0909-c7d4-alpha"
+  "beta" = "aiac-iam-0909-c7d4-beta"
+}
+user_names = {
+  "employee01" = "aiac-iam-0909-c7d4-employee01"
+}
+

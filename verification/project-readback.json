@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "projects": [
+    {
+      "project": "alpha",
+      "identifier_matches": true,
+      "project_name_matches": true,
+      "display_name": "游戏项目 Alpha"
+    },
+    {
+      "project": "beta",
+      "identifier_matches": true,
+      "project_name_matches": true,
+      "display_name": "游戏项目 Beta"
+    }
+  ]
+}

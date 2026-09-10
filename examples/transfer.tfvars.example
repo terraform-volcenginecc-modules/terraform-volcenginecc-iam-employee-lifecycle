@@ -1,0 +1,12 @@
+# 复制此 iam_users 清单替换根目录 terraform.tfvars 中的同名变量，保持 name_prefix 不变。
+iam_users = [
+  {
+    user_name         = "employee01"
+    display_name      = "示例员工"
+    groups            = ["operations"]
+    projects          = ["beta"]
+    enable_login      = false
+    enable_access_key = false
+    is_offboarding    = false
+  }
+]

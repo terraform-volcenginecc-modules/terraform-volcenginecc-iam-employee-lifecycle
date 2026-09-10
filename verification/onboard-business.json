@@ -1,0 +1,19 @@
+{
+  "phase": "onboard",
+  "status": "passed",
+  "probes": [
+    {
+      "probe": "group-inherited-discovery",
+      "code": "Success"
+    },
+    {
+      "probe": "alpha",
+      "code": "DryRunOperation"
+    },
+    {
+      "probe": "beta",
+      "code": "AccessDenied"
+    }
+  ],
+  "cloud_vpc_created": false
+}

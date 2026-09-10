@@ -1,0 +1,114 @@
+module.authorization.data.volcenginecc_iam_policies.existing: Reading...
+module.authorization.data.volcenginecc_iam_policies.existing: Read complete after 10s [id="cn-beijing"]
+module.foundation.volcenginecc_iam_group.this["offboarded"]: Refreshing state... [id=aiac-iam-0909-c7d4-offboarded]
+module.foundation.volcenginecc_iam_group.this["operations"]: Refreshing state... [id=aiac-iam-0909-c7d4-operations]
+module.foundation.volcenginecc_iam_group.this["developers"]: Refreshing state... [id=aiac-iam-0909-c7d4-developers]
+module.foundation.volcenginecc_iam_project.this["beta"]: Refreshing state... [id=aiac-iam-0909-c7d4-beta]
+module.foundation.volcenginecc_iam_project.this["alpha"]: Refreshing state... [id=aiac-iam-0909-c7d4-alpha]
+module.authorization.volcenginecc_iam_policy.common: Refreshing state... [id=aiac-iam-0909-c7d4-common-read|Custom]
+module.identities.volcenginecc_iam_user.this["employee01"]: Refreshing state... [id=aiac-iam-0909-c7d4-employee01]
+module.authorization.data.volcenginecc_iam_policy.current["beta"]: Reading...
+module.authorization.data.volcenginecc_iam_policy.current["beta"]: Read complete after 0s [id=aiac-iam-0909-c7d4-beta-access|Custom]
+module.authorization.data.volcenginecc_iam_policy.current["alpha"]: Reading...
+module.authorization.data.volcenginecc_iam_policy.current["alpha"]: Read complete after 0s [id=aiac-iam-0909-c7d4-alpha-access|Custom]
+module.identities.volcenginecc_iam_accesskey.this["employee01"]: Refreshing state... [id=[REDACTED ACCESS KEY]]
+module.authorization.volcenginecc_iam_policy.project["alpha"]: Refreshing state... [id=aiac-iam-0909-c7d4-alpha-access|Custom]
+module.authorization.volcenginecc_iam_policy.project["beta"]: Refreshing state... [id=aiac-iam-0909-c7d4-beta-access|Custom]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.identities.volcenginecc_iam_accesskey.this["employee01"] will be destroyed
+  # (because key ["employee01"] is not in for_each map)
+  - resource "volcenginecc_iam_accesskey" "this" {
+      - access_key_id     = [REDACTED] ACCESS KEY]" -> null
+      - created_time      = "20260909T085955Z" -> null
+      - id                = "[REDACTED ACCESS KEY]" -> null
+      - last_login_date   = "00010101T000000Z" -> null
+      - region            = "cn-beijing" -> null
+      - request_time      = "20260909T092329Z" -> null
+      - secret_access_key = [REDACTED]" -> null
+      - service           = "vpc" -> null
+      - status            = "inactive" -> null
+      - updated_time      = "20260909T092922Z" -> null
+      - user_name         = "aiac-iam-0909-c7d4-employee01" -> null
+    }
+
+  # module.identities.volcenginecc_iam_user.this["employee01"] will be destroyed
+  # (because key ["employee01"] is not in for_each map)
+  - resource "volcenginecc_iam_user" "this" {
+      - access_key             = [REDACTED]
+          - {
+              - access_key_id = [REDACTED] ACCESS KEY]" -> null
+              - create_date   = "20260909T085955Z" -> null
+              - region        = "cn-beijing" -> null
+              - request_time  = "20260909T092329Z" -> null
+              - service       = "vpc" -> null
+              - status        = "inactive" -> null
+              - update_date   = "20260909T092922Z" -> null
+              - user_name     = "aiac-iam-0909-c7d4-employee01" -> null
+            },
+        ] -> null
+      - account_id             = TEST_ACCOUNT_ID -> null
+      - create_date            = "20260909T084708Z" -> null
+      - description            = "Game employee managed by Terraform" -> null
+      - display_name           = "Example employee" -> null
+      - email_is_verify        = false -> null
+      - groups                 = [
+          - "aiac-iam-0909-c7d4-offboarded",
+        ] -> null
+      - id                     = "aiac-iam-0909-c7d4-employee01" -> null
+      - login_profile          = {
+          - create_date               = "20260909T085951Z" -> null
+          - last_login_date           = "00010101T000000Z" -> null
+          - last_login_ip             = "" -> null
+          - last_reset_password_time  = [REDACTED] -> null
+          - login_allowed             = false -> null
+          - login_locked              = false -> null
+          - password                  = [REDACTED] value) -> null
+          - password_expire_at        = [REDACTED] -> null
+          - password_reset_required   = [REDACTED] -> null
+          - safe_auth_exempt_duration = 10 -> null
+          - safe_auth_exempt_required = 1 -> null
+          - safe_auth_exempt_unit     = 0 -> null
+          - safe_auth_flag            = false -> null
+          - safe_auth_type            = "" -> null
+          - update_date               = "20260909T092918Z" -> null
+        } -> null
+      - mobile_phone_is_verify = false -> null
+      - security_config        = {
+          - safe_auth_close           = 0 -> null
+          - safe_auth_exempt_duration = 10 -> null
+          - safe_auth_type            = "phone,email,vmfa" -> null
+        } -> null
+      - tags                   = [
+          - {
+              - key   = "Environment" -> null
+              - value = "verification" -> null
+            },
+          - {
+              - key   = "Lifecycle" -> null
+              - value = "offboarded" -> null
+            },
+          - {
+              - key   = "Project" -> null
+              - value = "aiac-iam-0909-c7d4" -> null
+            },
+        ] -> null
+      - trn                    = "trn:iam::TEST_ACCOUNT_ID:user/aiac-iam-0909-c7d4-employee01" -> null
+      - update_date            = "20260909T084708Z" -> null
+      - user_id                = TEST_USER_ID -> null
+      - user_name              = "aiac-iam-0909-c7d4-employee01" -> null
+    }
+
+Plan: 0 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  ~ access_credentials = (sensitive value)
+  ~ user_names         = {
+      - employee01 = "aiac-iam-0909-c7d4-employee01"
+    }
+

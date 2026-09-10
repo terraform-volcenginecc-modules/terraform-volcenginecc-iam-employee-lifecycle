@@ -1,0 +1,12 @@
+{
+  "phase": "reuse-active",
+  "time": "2026-09-09T10:17:09.437050+00:00",
+  "source_fingerprint": "d2f8cdc07a9620f354f779babeff8ac183924974c55aef8ab76e69d0213acf10",
+  "status": "passed",
+  "resource_counts": {
+    "volcenginecc_iam_policy": 3,
+    "volcenginecc_iam_group": 3,
+    "volcenginecc_iam_project": 2,
+    "volcenginecc_iam_user": 1
+  }
+}

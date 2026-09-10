@@ -1,0 +1,7 @@
+Initializing modules...
+Initializing provider plugins...
+- Reusing previous version of volcengine/volcenginecc from the dependency lock file
+- Using previously-installed volcengine/volcenginecc v0.0.69
+
+Terraform has been successfully initialized!
+

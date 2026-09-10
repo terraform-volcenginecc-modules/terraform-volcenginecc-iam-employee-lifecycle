@@ -1,0 +1,104 @@
+{
+  "phase": "onboard",
+  "checks": {
+    "user_name": {
+      "observed": "aiac-iam-0909-r2-employee01",
+      "expected": "aiac-iam-0909-r2-employee01",
+      "passed": true
+    },
+    "groups": {
+      "observed": [
+        "aiac-iam-0909-r2-developers"
+      ],
+      "expected": [
+        "aiac-iam-0909-r2-developers"
+      ],
+      "passed": true
+    },
+    "login_allowed": {
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    "password_reset_required": {
+      "observed": true,
+      "expected": true,
+      "passed": true
+    },
+    "access_key_count": {
+      "observed": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "access_key_status": {
+      "observed": [],
+      "expected": [],
+      "passed": true
+    },
+    "direct_policy_names": {
+      "observed": [
+        "aiac-iam-0909-r2-alpha-access"
+      ],
+      "expected": [
+        "aiac-iam-0909-r2-alpha-access"
+      ],
+      "passed": true
+    },
+    "project_scope": {
+      "observed": [
+        "aiac-iam-0909-r2-alpha"
+      ],
+      "expected": [
+        "aiac-iam-0909-r2-alpha"
+      ],
+      "passed": true
+    },
+    "scope_type": {
+      "observed": [
+        "Project"
+      ],
+      "expected": [
+        "Project"
+      ],
+      "passed": true
+    },
+    "group_policy_names": {
+      "observed": [
+        "aiac-iam-0909-r2-common-read"
+      ],
+      "expected": [
+        "aiac-iam-0909-r2-common-read"
+      ],
+      "passed": true
+    }
+  },
+  "failures": [],
+  "user_id": "TEST_USER_ID",
+  "direct_policies": [
+    {
+      "name": "aiac-iam-0909-r2-alpha-access",
+      "scope": [
+        {
+          "attach_date": "20260909T100719Z",
+          "policy_scope_type": "Project",
+          "project_display_name": "游戏项目 Alpha",
+          "project_name": "aiac-iam-0909-r2-alpha"
+        }
+      ]
+    }
+  ],
+  "group_policies": [
+    {
+      "name": "aiac-iam-0909-r2-common-read",
+      "scope": [
+        {
+          "attach_date": "20260909T095037Z",
+          "policy_scope_type": "Global",
+          "project_display_name": "",
+          "project_name": ""
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}

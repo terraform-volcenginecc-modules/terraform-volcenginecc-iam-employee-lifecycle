@@ -1,0 +1,21 @@
+module.authorization.data.volcenginecc_iam_policies.existing: Reading...
+module.authorization.data.volcenginecc_iam_policies.existing: Read complete after 9s [id="cn-beijing"]
+module.foundation.volcenginecc_iam_group.this["operations"]: Refreshing state... [id=aiac-iam-0909-r2-operations]
+module.foundation.volcenginecc_iam_group.this["offboarded"]: Refreshing state... [id=aiac-iam-0909-r2-offboarded]
+module.foundation.volcenginecc_iam_group.this["developers"]: Refreshing state... [id=aiac-iam-0909-r2-developers]
+module.foundation.volcenginecc_iam_project.this["alpha"]: Refreshing state... [id=aiac-iam-0909-r2-alpha]
+module.foundation.volcenginecc_iam_project.this["beta"]: Refreshing state... [id=aiac-iam-0909-r2-beta]
+module.authorization.volcenginecc_iam_policy.common: Refreshing state... [id=aiac-iam-0909-r2-common-read|Custom]
+module.identities.volcenginecc_iam_user.this["employee01"]: Refreshing state... [id=aiac-iam-0909-r2-employee01]
+module.authorization.data.volcenginecc_iam_policy.current["alpha"]: Reading...
+module.authorization.data.volcenginecc_iam_policy.current["alpha"]: Read complete after 0s [id=aiac-iam-0909-r2-alpha-access|Custom]
+module.authorization.data.volcenginecc_iam_policy.current["beta"]: Reading...
+module.authorization.data.volcenginecc_iam_policy.current["beta"]: Read complete after 1s [id=aiac-iam-0909-r2-beta-access|Custom]
+module.authorization.volcenginecc_iam_policy.project["alpha"]: Refreshing state... [id=aiac-iam-0909-r2-alpha-access|Custom]
+module.authorization.volcenginecc_iam_policy.project["beta"]: Refreshing state... [id=aiac-iam-0909-r2-beta-access|Custom]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+

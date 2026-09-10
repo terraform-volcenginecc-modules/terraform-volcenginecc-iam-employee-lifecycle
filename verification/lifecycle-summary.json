@@ -1,0 +1,802 @@
+{
+  "onboard": {
+    "apply": {
+      "phase": "onboard",
+      "time": "2026-09-09T09:00:11.104093+00:00",
+      "source_fingerprint": "6a07ef301bceacd441a4d6bb92c27c199be6638e9996252990e84ca14e5a3d54",
+      "status": "passed",
+      "resource_counts": {
+        "volcenginecc_iam_policy": 3,
+        "volcenginecc_iam_group": 3,
+        "volcenginecc_iam_project": 2,
+        "volcenginecc_iam_accesskey": 1,
+        "volcenginecc_iam_user": 1
+      }
+    },
+    "api": {
+      "phase": "onboard",
+      "checks": {
+        "user_name": {
+          "observed": "aiac-iam-0909-c7d4-employee01",
+          "expected": "aiac-iam-0909-c7d4-employee01",
+          "passed": true
+        },
+        "groups": {
+          "observed": [
+            "aiac-iam-0909-c7d4-developers"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-developers"
+          ],
+          "passed": true
+        },
+        "login_allowed": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "password_reset_required": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "access_key_count": {
+          "observed": 1,
+          "expected": 1,
+          "passed": true
+        },
+        "access_key_status": {
+          "observed": [
+            "active"
+          ],
+          "expected": [
+            "active"
+          ],
+          "passed": true
+        },
+        "direct_policy_names": {
+          "observed": [
+            "aiac-iam-0909-c7d4-alpha-access"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-alpha-access"
+          ],
+          "passed": true
+        },
+        "project_scope": {
+          "observed": [
+            "aiac-iam-0909-c7d4-alpha"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-alpha"
+          ],
+          "passed": true
+        },
+        "scope_type": {
+          "observed": [
+            "Project"
+          ],
+          "expected": [
+            "Project"
+          ],
+          "passed": true
+        },
+        "group_policy_names": {
+          "observed": [
+            "aiac-iam-0909-c7d4-common-read"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-common-read"
+          ],
+          "passed": true
+        }
+      },
+      "failures": [],
+      "user_id": "TEST_USER_ID",
+      "direct_policies": [
+        {
+          "name": "aiac-iam-0909-c7d4-alpha-access",
+          "scope": [
+            {
+              "attach_date": "20260909T090003Z",
+              "policy_scope_type": "Project",
+              "project_display_name": "游戏项目 Alpha",
+              "project_name": "aiac-iam-0909-c7d4-alpha"
+            }
+          ]
+        }
+      ],
+      "group_policies": [
+        {
+          "name": "aiac-iam-0909-c7d4-common-read",
+          "scope": [
+            {
+              "attach_date": "20260909T084706Z",
+              "policy_scope_type": "Global",
+              "project_display_name": "",
+              "project_name": ""
+            }
+          ]
+        }
+      ],
+      "status": "passed"
+    },
+    "business": {
+      "phase": "onboard",
+      "status": "passed",
+      "probes": [
+        {
+          "probe": "group-inherited-discovery",
+          "code": "Success"
+        },
+        {
+          "probe": "alpha",
+          "code": "DryRunOperation"
+        },
+        {
+          "probe": "beta",
+          "code": "AccessDenied"
+        }
+      ],
+      "cloud_vpc_created": false
+    },
+    "idempotency": {
+      "status": "passed",
+      "exit_code": 0,
+      "evidence": "onboard-plan.log",
+      "fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
+      "explanation": "Real refreshed plan reports No changes after safe null/empty normalization"
+    }
+  },
+  "transfer": {
+    "apply": {
+      "phase": "transfer",
+      "time": "2026-09-09T09:20:29.801453+00:00",
+      "source_fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
+      "status": "passed",
+      "resource_counts": {
+        "volcenginecc_iam_policy": 3,
+        "volcenginecc_iam_group": 3,
+        "volcenginecc_iam_project": 2,
+        "volcenginecc_iam_accesskey": 1,
+        "volcenginecc_iam_user": 1
+      }
+    },
+    "api": {
+      "phase": "transfer",
+      "checks": {
+        "user_name": {
+          "observed": "aiac-iam-0909-c7d4-employee01",
+          "expected": "aiac-iam-0909-c7d4-employee01",
+          "passed": true
+        },
+        "groups": {
+          "observed": [
+            "aiac-iam-0909-c7d4-operations"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-operations"
+          ],
+          "passed": true
+        },
+        "login_allowed": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "password_reset_required": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "access_key_count": {
+          "observed": 1,
+          "expected": 1,
+          "passed": true
+        },
+        "access_key_status": {
+          "observed": [
+            "active"
+          ],
+          "expected": [
+            "active"
+          ],
+          "passed": true
+        },
+        "direct_policy_names": {
+          "observed": [
+            "aiac-iam-0909-c7d4-beta-access"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-beta-access"
+          ],
+          "passed": true
+        },
+        "project_scope": {
+          "observed": [
+            "aiac-iam-0909-c7d4-beta"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-beta"
+          ],
+          "passed": true
+        },
+        "scope_type": {
+          "observed": [
+            "Project"
+          ],
+          "expected": [
+            "Project"
+          ],
+          "passed": true
+        },
+        "group_policy_names": {
+          "observed": [
+            "aiac-iam-0909-c7d4-common-read"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-common-read"
+          ],
+          "passed": true
+        },
+        "same_identity": {
+          "observed": "TEST_USER_ID",
+          "expected": "TEST_USER_ID",
+          "passed": true
+        }
+      },
+      "failures": [],
+      "user_id": "TEST_USER_ID",
+      "direct_policies": [
+        {
+          "name": "aiac-iam-0909-c7d4-beta-access",
+          "scope": [
+            {
+              "attach_date": "20260909T092029Z",
+              "policy_scope_type": "Project",
+              "project_display_name": "游戏项目 Beta",
+              "project_name": "aiac-iam-0909-c7d4-beta"
+            }
+          ]
+        }
+      ],
+      "group_policies": [
+        {
+          "name": "aiac-iam-0909-c7d4-common-read",
+          "scope": [
+            {
+              "attach_date": "20260909T084706Z",
+              "policy_scope_type": "Global",
+              "project_display_name": "",
+              "project_name": ""
+            }
+          ]
+        }
+      ],
+      "status": "passed"
+    },
+    "business": {
+      "phase": "transfer",
+      "status": "passed",
+      "probes": [
+        {
+          "probe": "group-inherited-discovery",
+          "code": "Success"
+        },
+        {
+          "probe": "alpha",
+          "code": "AccessDenied"
+        },
+        {
+          "probe": "beta",
+          "code": "DryRunOperation"
+        }
+      ],
+      "cloud_vpc_created": false
+    },
+    "idempotency": {
+      "time": "2026-09-09T09:23:44.096195+00:00",
+      "status": "passed",
+      "exit_code": 0
+    }
+  },
+  "offboard": {
+    "apply": {
+      "phase": "offboard",
+      "time": "2026-09-09T09:29:30.293713+00:00",
+      "source_fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
+      "status": "passed",
+      "resource_counts": {
+        "volcenginecc_iam_policy": 3,
+        "volcenginecc_iam_group": 3,
+        "volcenginecc_iam_project": 2,
+        "volcenginecc_iam_accesskey": 1,
+        "volcenginecc_iam_user": 1
+      }
+    },
+    "api": {
+      "phase": "offboard",
+      "checks": {
+        "user_name": {
+          "observed": "aiac-iam-0909-c7d4-employee01",
+          "expected": "aiac-iam-0909-c7d4-employee01",
+          "passed": true
+        },
+        "groups": {
+          "observed": [
+            "aiac-iam-0909-c7d4-offboarded"
+          ],
+          "expected": [
+            "aiac-iam-0909-c7d4-offboarded"
+          ],
+          "passed": true
+        },
+        "login_allowed": {
+          "observed": false,
+          "expected": false,
+          "passed": true
+        },
+        "password_reset_required": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "access_key_count": {
+          "observed": 1,
+          "expected": 1,
+          "passed": true
+        },
+        "access_key_status": {
+          "observed": [
+            "inactive"
+          ],
+          "expected": [
+            "inactive"
+          ],
+          "passed": true
+        },
+        "direct_policy_names": {
+          "observed": [],
+          "expected": [],
+          "passed": true
+        },
+        "group_policy_names": {
+          "observed": [],
+          "expected": [],
+          "passed": true
+        },
+        "same_identity": {
+          "observed": "TEST_USER_ID",
+          "expected": "TEST_USER_ID",
+          "passed": true
+        }
+      },
+      "failures": [],
+      "user_id": "TEST_USER_ID",
+      "direct_policies": [],
+      "group_policies": [],
+      "status": "passed"
+    },
+    "business": {
+      "phase": "offboard",
+      "status": "passed",
+      "probes": [
+        {
+          "probe": "group-inherited-discovery",
+          "code": "InvalidAccessKey"
+        },
+        {
+          "probe": "alpha",
+          "code": "InvalidAccessKey"
+        },
+        {
+          "probe": "beta",
+          "code": "InvalidAccessKey"
+        }
+      ],
+      "cloud_vpc_created": false
+    },
+    "idempotency": {
+      "time": "2026-09-09T09:32:32.689347+00:00",
+      "status": "passed",
+      "exit_code": 0
+    }
+  },
+  "remove": {
+    "apply": {
+      "phase": "remove",
+      "time": "2026-09-09T09:37:36.725554+00:00",
+      "source_fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
+      "status": "passed",
+      "resource_counts": {
+        "volcenginecc_iam_policy": 3,
+        "volcenginecc_iam_group": 3,
+        "volcenginecc_iam_project": 2
+      }
+    },
+    "cleanup": {
+      "phase": "remove",
+      "status": "passed",
+      "checks": [
+        {
+          "check": "test_users_absent",
+          "passed": true,
+          "details": {
+            "count": 0
+          }
+        },
+        {
+          "check": "test_user_keys_absent",
+          "passed": true,
+          "details": "404 Page not found"
+        }
+      ]
+    }
+  },
+  "destroy": {
+    "apply": {
+      "phase": "destroy",
+      "time": "2026-09-09T09:42:45.967542+00:00",
+      "source_fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
+      "status": "passed",
+      "resource_counts": {}
+    },
+    "cleanup": {
+      "phase": "destroy",
+      "status": "passed",
+      "checks": [
+        {
+          "check": "test_users_absent",
+          "passed": true,
+          "details": {
+            "count": 0
+          }
+        },
+        {
+          "check": "test_user_keys_absent",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "test_groups_absent",
+          "passed": true,
+          "details": {
+            "count": 0
+          }
+        },
+        {
+          "check": "policy_common-read",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "policy_alpha-access",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "policy_beta-access",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "project_alpha",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "project_beta",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "baseline_counts_restored",
+          "passed": true,
+          "details": {
+            "users_usage": 5,
+            "groups_usage": 4,
+            "policies_usage": 1
+          }
+        }
+      ]
+    }
+  },
+  "reuse": {
+    "apply": {
+      "phase": "reuse",
+      "time": "2026-09-09T10:07:22.071561+00:00",
+      "source_fingerprint": "d2f8cdc07a9620f354f779babeff8ac183924974c55aef8ab76e69d0213acf10",
+      "status": "passed",
+      "resource_counts": {
+        "volcenginecc_iam_policy": 3,
+        "volcenginecc_iam_group": 3,
+        "volcenginecc_iam_project": 2,
+        "volcenginecc_iam_user": 1
+      }
+    },
+    "api": {
+      "status": "passed",
+      "checks": {
+        "user_name": true,
+        "no_access_keys": true,
+        "login_disabled": true,
+        "project_binding": true,
+        "group_membership": true
+      }
+    },
+    "idempotency": {
+      "time": "2026-09-09T10:09:38.557408+00:00",
+      "status": "passed",
+      "exit_code": 0
+    }
+  },
+  "reuse-active": {
+    "apply": {
+      "phase": "reuse-active",
+      "time": "2026-09-09T10:17:09.437050+00:00",
+      "source_fingerprint": "d2f8cdc07a9620f354f779babeff8ac183924974c55aef8ab76e69d0213acf10",
+      "status": "passed",
+      "resource_counts": {
+        "volcenginecc_iam_policy": 3,
+        "volcenginecc_iam_group": 3,
+        "volcenginecc_iam_project": 2,
+        "volcenginecc_iam_user": 1
+      }
+    },
+    "api": {
+      "phase": "onboard",
+      "checks": {
+        "user_name": {
+          "observed": "aiac-iam-0909-r2-employee01",
+          "expected": "aiac-iam-0909-r2-employee01",
+          "passed": true
+        },
+        "groups": {
+          "observed": [
+            "aiac-iam-0909-r2-developers"
+          ],
+          "expected": [
+            "aiac-iam-0909-r2-developers"
+          ],
+          "passed": true
+        },
+        "login_allowed": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "password_reset_required": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "access_key_count": {
+          "observed": 0,
+          "expected": 0,
+          "passed": true
+        },
+        "access_key_status": {
+          "observed": [],
+          "expected": [],
+          "passed": true
+        },
+        "direct_policy_names": {
+          "observed": [
+            "aiac-iam-0909-r2-alpha-access"
+          ],
+          "expected": [
+            "aiac-iam-0909-r2-alpha-access"
+          ],
+          "passed": true
+        },
+        "project_scope": {
+          "observed": [
+            "aiac-iam-0909-r2-alpha"
+          ],
+          "expected": [
+            "aiac-iam-0909-r2-alpha"
+          ],
+          "passed": true
+        },
+        "scope_type": {
+          "observed": [
+            "Project"
+          ],
+          "expected": [
+            "Project"
+          ],
+          "passed": true
+        },
+        "group_policy_names": {
+          "observed": [
+            "aiac-iam-0909-r2-common-read"
+          ],
+          "expected": [
+            "aiac-iam-0909-r2-common-read"
+          ],
+          "passed": true
+        }
+      },
+      "failures": [],
+      "user_id": "TEST_USER_ID",
+      "direct_policies": [
+        {
+          "name": "aiac-iam-0909-r2-alpha-access",
+          "scope": [
+            {
+              "attach_date": "20260909T100719Z",
+              "policy_scope_type": "Project",
+              "project_display_name": "游戏项目 Alpha",
+              "project_name": "aiac-iam-0909-r2-alpha"
+            }
+          ]
+        }
+      ],
+      "group_policies": [
+        {
+          "name": "aiac-iam-0909-r2-common-read",
+          "scope": [
+            {
+              "attach_date": "20260909T095037Z",
+              "policy_scope_type": "Global",
+              "project_display_name": "",
+              "project_name": ""
+            }
+          ]
+        }
+      ],
+      "status": "passed"
+    },
+    "idempotency": {
+      "time": "2026-09-09T10:19:59.539768+00:00",
+      "status": "passed",
+      "exit_code": 0
+    }
+  },
+  "reuse-offboard": {
+    "apply": {
+      "phase": "reuse-offboard",
+      "time": "2026-09-09T10:24:38.129234+00:00",
+      "source_fingerprint": "d2f8cdc07a9620f354f779babeff8ac183924974c55aef8ab76e69d0213acf10",
+      "status": "passed",
+      "resource_counts": {
+        "volcenginecc_iam_policy": 3,
+        "volcenginecc_iam_group": 3,
+        "volcenginecc_iam_project": 2,
+        "volcenginecc_iam_user": 1
+      }
+    },
+    "api": {
+      "phase": "offboard",
+      "checks": {
+        "user_name": {
+          "observed": "aiac-iam-0909-r2-employee01",
+          "expected": "aiac-iam-0909-r2-employee01",
+          "passed": true
+        },
+        "groups": {
+          "observed": [
+            "aiac-iam-0909-r2-offboarded"
+          ],
+          "expected": [
+            "aiac-iam-0909-r2-offboarded"
+          ],
+          "passed": true
+        },
+        "login_allowed": {
+          "observed": false,
+          "expected": false,
+          "passed": true
+        },
+        "password_reset_required": {
+          "observed": true,
+          "expected": true,
+          "passed": true
+        },
+        "access_key_count": {
+          "observed": 0,
+          "expected": 0,
+          "passed": true
+        },
+        "access_key_status": {
+          "observed": [],
+          "expected": [],
+          "passed": true
+        },
+        "direct_policy_names": {
+          "observed": [],
+          "expected": [],
+          "passed": true
+        },
+        "group_policy_names": {
+          "observed": [],
+          "expected": [],
+          "passed": true
+        },
+        "same_identity": {
+          "observed": "TEST_USER_ID",
+          "expected": "TEST_USER_ID",
+          "passed": true
+        }
+      },
+      "failures": [],
+      "user_id": "TEST_USER_ID",
+      "direct_policies": [],
+      "group_policies": [],
+      "status": "passed"
+    },
+    "idempotency": {
+      "time": "2026-09-09T10:26:03.751750+00:00",
+      "status": "passed",
+      "exit_code": 0
+    }
+  },
+  "reuse-destroy": {
+    "apply": {
+      "phase": "reuse-destroy",
+      "time": "2026-09-09T10:30:04.591910+00:00",
+      "source_fingerprint": "d2f8cdc07a9620f354f779babeff8ac183924974c55aef8ab76e69d0213acf10",
+      "status": "passed",
+      "resource_counts": {}
+    },
+    "cleanup": {
+      "phase": "reuse-destroy",
+      "status": "passed",
+      "checks": [
+        {
+          "check": "test_users_absent",
+          "passed": true,
+          "details": {
+            "count": 0
+          }
+        },
+        {
+          "check": "test_user_keys_absent",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "test_groups_absent",
+          "passed": true,
+          "details": {
+            "count": 0
+          }
+        },
+        {
+          "check": "policy_common-read",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "policy_alpha-access",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "policy_beta-access",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "project_alpha",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "project_beta",
+          "passed": true,
+          "details": "404 Page not found"
+        },
+        {
+          "check": "baseline_counts_restored",
+          "passed": true,
+          "details": {
+            "users_usage": 5,
+            "groups_usage": 4,
+            "policies_usage": 1
+          }
+        }
+      ]
+    }
+  }
+}

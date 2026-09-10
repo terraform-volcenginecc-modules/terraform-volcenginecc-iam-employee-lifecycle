@@ -1,0 +1,19 @@
+{
+  "phase": "transfer",
+  "status": "passed",
+  "probes": [
+    {
+      "probe": "group-inherited-discovery",
+      "code": "Success"
+    },
+    {
+      "probe": "alpha",
+      "code": "AccessDenied"
+    },
+    {
+      "probe": "beta",
+      "code": "DryRunOperation"
+    }
+  ],
+  "cloud_vpc_created": false
+}

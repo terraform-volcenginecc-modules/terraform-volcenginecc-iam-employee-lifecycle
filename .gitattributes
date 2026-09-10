@@ -1,0 +1,2 @@
+# Preserve bytes of exported historical evidence.
+verification/logs/*.log -text whitespace=-blank-at-eof

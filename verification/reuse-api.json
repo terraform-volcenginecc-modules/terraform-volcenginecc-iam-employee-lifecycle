@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": {
+    "user_name": true,
+    "no_access_keys": true,
+    "login_disabled": true,
+    "project_binding": true,
+    "group_membership": true
+  }
+}

@@ -1,0 +1,9 @@
+terraform {
+  required_version = ">= 1.9.0, < 2.0.0"
+  required_providers {
+    volcenginecc = {
+      source  = "volcengine/volcenginecc"
+      version = "= 0.0.69"
+    }
+  }
+}

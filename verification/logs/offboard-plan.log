@@ -1,0 +1,83 @@
+module.authorization.data.volcenginecc_iam_policies.existing: Reading...
+module.authorization.data.volcenginecc_iam_policies.existing: Read complete after 9s [id="cn-beijing"]
+module.foundation.volcenginecc_iam_project.this["beta"]: Refreshing state... [id=aiac-iam-0909-c7d4-beta]
+module.foundation.volcenginecc_iam_project.this["alpha"]: Refreshing state... [id=aiac-iam-0909-c7d4-alpha]
+module.foundation.volcenginecc_iam_group.this["developers"]: Refreshing state... [id=aiac-iam-0909-c7d4-developers]
+module.foundation.volcenginecc_iam_group.this["offboarded"]: Refreshing state... [id=aiac-iam-0909-c7d4-offboarded]
+module.foundation.volcenginecc_iam_group.this["operations"]: Refreshing state... [id=aiac-iam-0909-c7d4-operations]
+module.authorization.volcenginecc_iam_policy.common: Refreshing state... [id=aiac-iam-0909-c7d4-common-read|Custom]
+module.identities.volcenginecc_iam_user.this["employee01"]: Refreshing state... [id=aiac-iam-0909-c7d4-employee01]
+module.authorization.data.volcenginecc_iam_policy.current["beta"]: Reading...
+module.authorization.data.volcenginecc_iam_policy.current["beta"]: Read complete after 1s [id=aiac-iam-0909-c7d4-beta-access|Custom]
+module.authorization.data.volcenginecc_iam_policy.current["alpha"]: Reading...
+module.authorization.data.volcenginecc_iam_policy.current["alpha"]: Read complete after 0s [id=aiac-iam-0909-c7d4-alpha-access|Custom]
+module.identities.volcenginecc_iam_accesskey.this["employee01"]: Refreshing state... [id=[REDACTED ACCESS KEY]]
+module.authorization.volcenginecc_iam_policy.project["alpha"]: Refreshing state... [id=aiac-iam-0909-c7d4-alpha-access|Custom]
+module.authorization.volcenginecc_iam_policy.project["beta"]: Refreshing state... [id=aiac-iam-0909-c7d4-beta-access|Custom]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # module.authorization.volcenginecc_iam_policy.project["beta"] will be updated in-place
+  ~ resource "volcenginecc_iam_policy" "project" {
+        id                     = "aiac-iam-0909-c7d4-beta-access|Custom"
+      ~ policy_users           = [
+          - {
+              - name         = "aiac-iam-0909-c7d4-employee01" -> null
+              - policy_scope = [
+                  - {
+                      - project_name = "aiac-iam-0909-c7d4-beta" -> null
+                    },
+                ] -> null
+            },
+        ]
+        # (10 unchanged attributes hidden)
+    }
+
+  # module.identities.volcenginecc_iam_accesskey.this["employee01"] will be updated in-place
+  ~ resource "volcenginecc_iam_accesskey" "this" {
+        id                = "[REDACTED ACCESS KEY]"
+      ~ status            = "active" -> "inactive"
+        # (9 unchanged attributes hidden)
+    }
+
+  # module.identities.volcenginecc_iam_user.this["employee01"] will be updated in-place
+  ~ resource "volcenginecc_iam_user" "this" {
+      ~ groups                 = [
+          - "aiac-iam-0909-c7d4-operations",
+          + "aiac-iam-0909-c7d4-offboarded",
+        ]
+        id                     = "aiac-iam-0909-c7d4-employee01"
+      ~ login_profile          = {
+          ~ login_allowed             = true -> false
+            # (14 unchanged attributes hidden)
+        }
+      ~ tags                   = [
+            {
+                key   = "Environment"
+                value = "verification"
+            },
+          - {
+              - key   = "Lifecycle" -> null
+              - value = "active" -> null
+            },
+            {
+                key   = "Project"
+                value = "aiac-iam-0909-c7d4"
+            },
+          + {
+              + key   = "Lifecycle"
+              + value = "offboarded"
+            },
+        ]
+        # (13 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 3 to change, 0 to destroy.
+
+Changes to Outputs:
+  ~ access_credentials = (sensitive value)
+

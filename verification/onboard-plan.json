@@ -1,0 +1,110 @@
+{
+  "phase": "onboard",
+  "time": "2026-09-09T09:15:11.190777+00:00",
+  "fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
+  "parameters_sha256": "47c751b9c38303a8bc5652104228ce211c6e3df78f1639952824b237dbdfd709",
+  "plan_sha256": "8609a687d5e752779684f81de7b090a40466e00bc51ae34119b0d00e00498fd0",
+  "plan": {
+    "totals": {
+      "create": 0,
+      "update": 0,
+      "delete": 0,
+      "replace": 0,
+      "read": 0,
+      "no-op": 10
+    },
+    "changes": [
+      {
+        "address": "module.authorization.volcenginecc_iam_policy.common",
+        "type": "volcenginecc_iam_policy",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.authorization.volcenginecc_iam_policy.project[\"alpha\"]",
+        "type": "volcenginecc_iam_policy",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.authorization.volcenginecc_iam_policy.project[\"beta\"]",
+        "type": "volcenginecc_iam_policy",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.foundation.volcenginecc_iam_group.this[\"developers\"]",
+        "type": "volcenginecc_iam_group",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.foundation.volcenginecc_iam_group.this[\"offboarded\"]",
+        "type": "volcenginecc_iam_group",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.foundation.volcenginecc_iam_group.this[\"operations\"]",
+        "type": "volcenginecc_iam_group",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.foundation.volcenginecc_iam_project.this[\"alpha\"]",
+        "type": "volcenginecc_iam_project",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.foundation.volcenginecc_iam_project.this[\"beta\"]",
+        "type": "volcenginecc_iam_project",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.identities.volcenginecc_iam_accesskey.this[\"employee01\"]",
+        "type": "volcenginecc_iam_accesskey",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      },
+      {
+        "address": "module.identities.volcenginecc_iam_user.this[\"employee01\"]",
+        "type": "volcenginecc_iam_user",
+        "mode": "managed",
+        "actions": [
+          "no-op"
+        ],
+        "summary": "no-op"
+      }
+    ],
+    "requires_confirmation": false
+  }
+}

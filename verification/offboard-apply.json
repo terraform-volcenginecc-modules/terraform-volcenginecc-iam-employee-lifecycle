@@ -1,0 +1,13 @@
+{
+  "phase": "offboard",
+  "time": "2026-09-09T09:29:30.293713+00:00",
+  "source_fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
+  "status": "passed",
+  "resource_counts": {
+    "volcenginecc_iam_policy": 3,
+    "volcenginecc_iam_group": 3,
+    "volcenginecc_iam_project": 2,
+    "volcenginecc_iam_accesskey": 1,
+    "volcenginecc_iam_user": 1
+  }
+}
