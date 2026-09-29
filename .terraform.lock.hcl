@@ -3,9 +3,10 @@
 
 provider "registry.terraform.io/volcengine/volcenginecc" {
   version     = "0.0.69"
-  constraints = "0.0.69"
+  constraints = "~> 0.0.69"
   hashes = [
     "h1:4XVFMwy0RW4f2aMm4Y6T7vUzNdi0IBUUDyrj8XXD/O4=",
+    "h1:uMG0vnwcqkQfOCgeckVCD277b7eSo28jrJlj18+yZ+4=",
     "zh:3533621b3d6bc18ab8f016d55835fa59e1717e678275a43c02be16ed9bd66736",
     "zh:4510ab584263d845375afbd0b2c11fae73baff1f00b77c0aded1ff32ff1a3e39",
     "zh:523bfe740b9503ed707973582ff1ea14fec187f943911bd73fc7f155a1b50342",

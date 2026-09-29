@@ -3,5 +3,6 @@
 *.tfstate*
 *.tfplan
 *.tfvars
+!terraform.tfvars
 *.auto.tfvars.json
 .env*

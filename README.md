@@ -94,8 +94,8 @@ Provider 为 `volcengine/volcenginecc`，固定版本 `0.0.69`。IAM 对象属�
 ├── outputs.tf                   # 输出用户名、组名、项目名、策略名及可选凭证
 ├── providers.tf                 # volcenginecc Provider 配置
 ├── versions.tf                  # Terraform 与 Provider 版本约束
-├── checks.tf                    # 跨变量校验（check 块，兼容 Terraform 1.5.7）
-├── terraform.tfvars.example     # 示例变量文件（入职场景）
+├── validations.tf               # 跨变量校验（precondition 硬阻断，兼容 Terraform 1.5.7）
+├── terraform.tfvars             # 默认变量文件（入职场景）
 ├── examples/                    # 场景化 tfvars 示例
 │   ├── transfer.tfvars.example  # 转岗
 │   ├── offboard.tfvars.example  # 离职归档
@@ -194,11 +194,7 @@ export VOLCENGINE_REGION="cn-beijing"
 export TF_VAR_initial_passwords='{"employee01":"<strong-password>"}'
 ```
 
-复制示例变量文件并按需修改：
-
-```bash
-cp terraform.tfvars.example terraform.tfvars
-```
+按需修改仓库中的 `terraform.tfvars`，确保 `name_prefix` 使用目标账号内独占前缀。
 
 重点确认以下参数：
 
@@ -226,7 +222,7 @@ terraform validate
 terraform plan
 ```
 
-**入职**：在 `iam_users` 加入条目，指定逻辑 groups/projects（参考 `terraform.tfvars.example`）。启用登录时将 `enable_login` 设为 `true` 并注入 `TF_VAR_initial_passwords`；启用编程访问时设 `enable_access_key=true`，密钥通过安全渠道交付。
+**入职**：在 `terraform.tfvars` 的 `iam_users` 中加入条目，指定逻辑 groups/projects。启用登录时将 `enable_login` 设为 `true` 并注入 `TF_VAR_initial_passwords`；启用编程访问时设 `enable_access_key=true`，密钥通过安全渠道交付。
 
 ```bash
 terraform plan
