@@ -94,7 +94,7 @@ Provider 为 `volcengine/volcenginecc`，固定版本 `0.0.69`。IAM 对象属�
 ├── outputs.tf                   # 输出用户名、组名、项目名、策略名及可选凭证
 ├── providers.tf                 # volcenginecc Provider 配置
 ├── versions.tf                  # Terraform 与 Provider 版本约束
-├── validations.tf               # 跨变量校验（precondition 硬阻断，兼容 Terraform 1.5.7）
+├── checks.tf                    # 跨变量校验（check 块，兼容 Terraform 1.5.7）
 ├── terraform.tfvars             # 默认变量文件（入职场景）
 ├── examples/                    # 场景化 tfvars 示例
 │   ├── transfer.tfvars.example  # 转岗
