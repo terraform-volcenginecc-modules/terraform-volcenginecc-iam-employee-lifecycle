@@ -1,9 +1,0 @@
-{
-  "status": "cloud_lifecycle_verified",
-  "provider": "volcengine/volcenginecc",
-  "version": "0.0.69",
-  "fingerprint": "0743957e376767722f498facf77d790203d59765e4afd6bf6b8900d0cf39e9e5",
-  "public_template_approved": false,
-  "cloud_resources_remaining": 0,
-  "interactive_console_login_tested": false
-}

@@ -1,7 +1,0 @@
-{
-  "status": "passed",
-  "exit_code": 0,
-  "evidence": "onboard-plan.log",
-  "fingerprint": "aa11e6daeadf88e1b8d072e4de6769a5cf2b0060b7bd8f75ca0700cbc6238b76",
-  "explanation": "Real refreshed plan reports No changes after safe null/empty normalization"
-}
