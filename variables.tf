@@ -49,20 +49,15 @@ variable "offboarding_group" {
   type        = string
   description = "离职归档组的逻辑键；此组不得被 common_policy_groups 授权"
   default     = "offboarded"
-  validation {
-    condition     = contains(keys(var.groups), var.offboarding_group) && !contains(var.common_policy_groups, var.offboarding_group)
-    error_message = "归档组必须存在，并且不得加入通用权限授权组。"
-  }
+  # 跨变量校验（引用 var.groups、var.common_policy_groups）迁移至根模块 checks.tf 的 check 块，
+  # 以兼容 Terraform 1.5.7（1.9 之前不允许 validation 引用其他变量）。
 }
 
 variable "common_policy_groups" {
   type        = set(string)
   description = "继承通用只读权限的工作组逻辑键"
   default     = ["developers", "operations"]
-  validation {
-    condition     = alltrue([for group in var.common_policy_groups : contains(keys(var.groups), group)])
-    error_message = "common_policy_groups 只能引用 groups 中已定义的组。"
-  }
+  # 跨变量校验（引用 var.groups）迁移至根模块 checks.tf 的 check 块，以兼容 Terraform 1.5.7。
 }
 
 variable "common_policy_actions" {
@@ -98,14 +93,8 @@ variable "iam_users" {
     condition     = alltrue([for user in var.iam_users : can(regex("^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,29}$", user.user_name))])
     error_message = "员工 user_name 需为 1–30 位英文、数字、下划线、点或连字符。"
   }
-  validation {
-    condition = alltrue([
-      for user in var.iam_users :
-      alltrue([for group in user.groups : contains(keys(var.groups), group)]) &&
-      alltrue([for project in user.projects : contains(keys(var.projects), project)])
-    ])
-    error_message = "员工的 groups/projects 必须引用本工程已定义的组与项目。"
-  }
+  # groups/projects 引用完整性校验（引用 var.groups、var.projects）迁移至根模块 checks.tf 的 check 块，
+  # 以兼容 Terraform 1.5.7。
 }
 
 variable "initial_passwords" {
