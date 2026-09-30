@@ -2,6 +2,33 @@
 
 本工程基于 `volcenginecc` Provider，在火山引擎上以单账号 IAM 的方式管理游戏企业员工的身份生命周期。通过 `terraform.tfvars` 中的 `iam_users` 列表，统一完成员工入职、转岗、离职归档和最终删除，并按游戏项目分配职责与权限。
 
+## 快速开始
+
+这份模板适合用一份人员清单管理独占的 IAM 用户、用户组、项目和策略。模板不会接管同名既有身份；控制台登录、初次改密和 MFA 仍需要使用者按组织流程完成。
+
+1. 确认执行账号具备目标 IAM 资源的创建、读取、更新和删除权限，并为本次环境选择唯一的 `name_prefix`。
+2. 在 `terraform.tfvars` 中填写项目、组和 `iam_users`；密码只通过 `TF_VAR_initial_passwords` 等安全环境变量注入。
+3. 初始化、检查并审阅变更：
+
+```bash
+terraform init
+terraform fmt -check -recursive
+terraform validate
+terraform plan -out=tfplan
+```
+
+4. 确认 Plan 只包含本次人员和权限变更后再执行：
+
+```bash
+terraform apply tfplan
+terraform output user_names
+terraform output group_names
+terraform output project_names
+terraform output policy_names
+```
+
+Apply 后先完成“4.4 部署后简易验证”，再将账号或访问凭证交付给使用者。不要把 `terraform output -json`、State 或含初始密码的终端输出粘贴到工单和群聊。
+
 ## 1. 业务背景
 
 游戏企业人员（入职、离职、转岗）流动频繁，在单账号 IAM 管理模式下，每一次人员变动都需要在火山引擎控制台进行一系列手动操作，效率低且容易埋下安全隐患：
@@ -232,25 +259,22 @@ terraform apply
 **转岗**：按 `examples/transfer.tfvars.example` 修改同一员工的 groups/projects，保持 `user_name` 和 `name_prefix` 不变。Plan 应只调整组和项目绑定而保留员工身份。
 
 ```bash
-cp examples/transfer.tfvars.example terraform.tfvars   # 或替换其中 iam_users 清单
-terraform plan
-terraform apply
+terraform plan -var-file=examples/transfer.tfvars.example -out=transfer.tfplan
+terraform apply transfer.tfplan
 ```
 
 **离职归档**：按 `examples/offboard.tfvars.example` 设置 `is_offboarding=true`。员工进入无权限归档组，项目策略解除，登录禁用，已管理密钥置为 inactive。原先开启的登录/密钥开关应保持 `true` 以执行禁用操作。
 
 ```bash
-cp examples/offboard.tfvars.example terraform.tfvars
-terraform plan
-terraform apply
+terraform plan -var-file=examples/offboard.tfvars.example -out=offboard.tfplan
+terraform apply offboard.tfplan
 ```
 
 **最终删除**：按 `examples/remove.tfvars.example` 从 `iam_users` 移除对应条目。审核 Plan 中的用户与密钥删除后再 Apply；Terraform 同时移除本工程管理的项目授权。归档与删除是两种明确操作，不通过改名替代。
 
 ```bash
-cp examples/remove.tfvars.example terraform.tfvars
-terraform plan
-terraform apply
+terraform plan -var-file=examples/remove.tfvars.example -out=remove.tfplan
+terraform apply remove.tfplan
 ```
 
 ### 4.3 部署预期结果
@@ -273,9 +297,22 @@ terraform output
 | `policy_names` | 通用策略及各项目策略的实际名称 |
 | `access_credentials` | 可选编程访问凭证，`sensitive` 输出，供安全分发 |
 
-`terraform output -json` 会输出敏感值，不能直接写入报告或共享日志。验证建议：入职后核对组成员、Project 作用域授权、登录与密钥状态；转岗后核对新旧组与项目授权切换、用户身份不变；离职后确认归档组无策略、登录禁用、密钥失效；每次 Apply 后重新 Plan 预期 `No changes`。
+`terraform output -json` 会输出敏感值，不能直接写入报告或共享日志。
 
-### 4.4 销毁资源
+### 4.4 部署后简易验证
+
+以下检查用于快速确认本次变更是否符合人员生命周期预期；完整断言和历史执行证据见文末验收记录。
+
+1. **资源与名称**  
+   在 Terraform 运行目录执行 `terraform output user_names`、`group_names`、`project_names` 和 `policy_names`。预期逻辑键都能映射到带本次前缀的实际名称，且不出现计划外人员。
+2. **权限关联**  
+   在 IAM 控制台或只读 API 中定位目标用户。入职应进入声明的工作组并获得对应 Project 作用域策略；转岗应保留同一用户身份，只切换组和项目授权。
+3. **离职与密钥**  
+   对 `is_offboarding=true` 的用户，预期只在无权限归档组中、项目策略已解除、登录已禁用、Terraform 管理的访问密钥为 inactive。密钥停用可能存在短暂传播延迟，应在限定时间内复查，不把一次旧会话成功直接判为撤权失败。
+4. **幂等性与人工登录**  
+   使用同一变量重新执行 `terraform plan -detailed-exitcode`，预期退出码为 0。若启用了控制台登录，再由账号使用者完成人工登录和首次改密；该页面交互不由 Terraform 自动验证。
+
+### 4.5 销毁资源
 
 ```bash
 terraform plan -destroy   # 审核仅本工程资源
@@ -288,7 +325,14 @@ terraform destroy
 - 销毁后以只读 API 核对用户、密钥、组、策略和项目均无本轮前缀残留。
 - 销毁会删除 Terraform 管理的全部资源，请勿在生产环境误执行。
 
-## 5. 总结
+## 5. 已知限制与验证边界
+
+- 模板管理单账号内、本工程独占前缀的 IAM 对象，不负责既有身份纳管、审批流、SSO 或 MFA 绑定。
+- `access_credentials` 是敏感输出，但敏感值仍会进入 Terraform State；State 必须加密、限权并按环境隔离。
+- 历史验收已覆盖入职、转岗、离职、密钥停用和最终删除；控制台登录与首次改密按当轮范围未执行。该结论对应报告记录时的源码和环境，不是当前账号的实时状态。
+- [详细历史验收记录](https://bytedance.larkoffice.com/wiki/QuJCwHmrai9TWdkqDvMc4DBXn1g)
+
+## 6. 总结
 
 本方案的主要优势：
 
@@ -298,3 +342,60 @@ terraform destroy
 - **标准化与可复制**：提供开箱即用的 IaC 模板与场景化示例，跨团队、跨项目权限管理保持一致，新业务可快速复用。
 
 未来可进一步与企业 HR 系统、CMDB、堡垒机等集成，将审批后的 HR 变更映射为 `iam_users` 更新并保留人工确认与执行证据；也可接入远端 Backend、SSO 与多账号治理，构建更统一立体的云上身份治理体系。
+
+## 7. 平台客户使用与验收指引
+
+平台客户只需在平台填写参数并发起部署，无需在本地执行 Terraform 命令。部署完成后，按本节在平台和火山引擎控制台核对结果。
+
+### 7.1 部署前确认
+
+- 选择正确的火山引擎账号，并确认平台执行身份具备 IAM 用户、用户组、项目、策略和访问密钥的管理权限。
+- 使用账号内唯一的 `name_prefix`，避免与已有资源重名。
+- 确认员工填写的用户组和项目已在本次参数中定义。
+- 开启控制台登录时，通过平台的敏感参数能力填写符合账号策略的初始密码。
+- 密码、AK/SK 和 Token 不得填写到普通输入框、工单、聊天记录或截图中。
+
+### 7.2 查看部署结果
+
+先在平台确认部署状态为“成功”，再查看模板输出：
+
+| 输出 | 用途 |
+| --- | --- |
+| `user_names` | 查看实际创建的员工用户名 |
+| `group_names` | 查看实际创建的用户组名称 |
+| `project_names` | 查看实际创建的项目名称 |
+| `policy_names` | 查看通用策略和项目策略名称 |
+| `access_credentials` | 查看可选访问凭证，仅限授权人员使用 |
+
+当前示例参数应创建 2 个项目、3 个用户组、1 个用户和 3 个策略，共 9 个云资源；启用访问密钥后还会增加对应的密钥资源。实际数量以平台填写的参数为准。
+
+### 7.3 控制台验收
+
+在火山引擎控制台完成以下检查：
+
+1. **检查资源是否齐全**  
+   在项目、用户组、用户和策略列表中，按平台输出名称查找资源。名称和数量应与平台参数一致。
+
+2. **检查员工权限**  
+   打开员工详情，确认员工只加入配置的工作组；打开项目策略，确认员工只绑定配置的项目。离职归档组不应绑定通用策略。
+
+3. **检查转岗或离职结果**  
+   转岗后应保留同一员工身份，只更新工作组和项目权限。离职后，员工应进入归档组、解除项目策略并关闭登录。
+
+4. **检查可选登录和访问密钥**  
+   开启登录时，由员工通过安全渠道获取初始密码，完成首次登录和改密。开启访问密钥时，确认在职员工密钥为 `active`；离职后如选择保留密钥，状态应变为 `inactive`。
+
+满足以下条件即可认为基础设施部署符合预期：平台部署成功、主要输出完整、控制台资源齐全、员工组关系和项目授权与参数一致。
+
+### 7.4 常见异常
+
+| 现象 | 优先检查 |
+| --- | --- |
+| 平台成功但控制台找不到资源 | 是否查看了正确账号，搜索名称是否与平台输出一致 |
+| 员工已创建但没有项目权限 | 员工的 `projects`、项目策略动作及策略绑定是否正确 |
+| 开启登录后部署失败 | 是否填写初始密码，密码是否满足账号实际密码策略 |
+| 转岗后出现新用户 | 是否修改了 `user_name` 或 `name_prefix` |
+| 离职后密钥被删除 | `enable_access_key=false` 表示删除；需要保留并停用时应保持为 `true` |
+| 离职后密钥仍短暂可用 | 密钥状态可能异步生效，间隔一段时间后再次检查 |
+
+历史验收已覆盖入职、转岗、离职、密钥停用、最终删除和环境清理；控制台首次登录与改密未验证。验收结果对应当时的模板版本和测试环境，只作为能力参考，不代表当前部署状态。详见[历史验收记录](https://bytedance.larkoffice.com/wiki/QuJCwHmrai9TWdkqDvMc4DBXn1g)。
